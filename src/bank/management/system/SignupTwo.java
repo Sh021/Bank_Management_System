@@ -201,6 +201,7 @@ public class SignupTwo extends JFrame implements ActionListener{
                 c.s.executeUpdate(query);
             }
             //catch
+            //abhay's comment
             
         }catch(Exception e){
             System.out.println(e);
