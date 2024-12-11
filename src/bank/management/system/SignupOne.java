@@ -202,38 +202,15 @@ public class SignupOne extends JFrame implements ActionListener{
         try{
             if(name.equals("")){
                 JOptionPane.showMessageDialog(null, "Name is Required");
-            }
-            if(fname.equals("")){
-                JOptionPane.showMessageDialog(null, "Father's Name is Required");
-            }
-            if(dob.equals("")){
-                JOptionPane.showMessageDialog(null, "Date of Birth is Required");
-            }
-            if(gender.equals("")){
-                JOptionPane.showMessageDialog(null, "Gender is Required");
-            }
-            if(email.equals("")){
-                JOptionPane.showMessageDialog(null, "Email is Required");
-            }
-            if(marital.equals("")){
-                JOptionPane.showMessageDialog(null, "Marital Status is Required");
-            }
-            if(address.equals("")){
-                JOptionPane.showMessageDialog(null, "Address is Required");
-            }
-            if(city.equals("")){
-                JOptionPane.showMessageDialog(null, "City is Required");
-            }
-            if(state.equals("")){
-                JOptionPane.showMessageDialog(null, "State is Required");
-            }
-            if(pin.equals("")){
-                JOptionPane.showMessageDialog(null, "Pin Code is Required");
             }else{
                 Conn c=new Conn();
                 String query="insert into signup values('"+formno+"','"+name+"','"+fname+"','"+dob+"','"+gender+"','"+email+"','"+marital+"','"+address+"','"+city+"','"+state+"','"+pin+"')";
                 c.s.executeUpdate(query);
+                
+                 setVisible(false);
+                new SignupTwo(formno).setVisible(true);
             }
+           
             
             
         }catch(Exception e){
