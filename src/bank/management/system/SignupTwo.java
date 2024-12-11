@@ -13,8 +13,10 @@ public class SignupTwo extends JFrame implements ActionListener{
     JButton next;
     JRadioButton syes,sno,eno,eyes;
     JComboBox religionbox,categorybox,incomebox,qualibox,occupationbox;
+    String formno;
     
-    SignupTwo(){
+    SignupTwo(String formno){
+        this.formno=formno;
         setLayout(null);
         
         setTitle("NEW ACCOUNT APPLICATION FORM - PAGE 2");
@@ -139,8 +141,8 @@ public class SignupTwo extends JFrame implements ActionListener{
         add(eno);
         
         ButtonGroup existinggroup=new ButtonGroup();
-        seniorgroup.add(eyes);
-        seniorgroup.add(eno);
+        existinggroup.add(eyes);
+        existinggroup.add(eno);
         
         
         next=new JButton("Next");
@@ -186,22 +188,15 @@ public class SignupTwo extends JFrame implements ActionListener{
         try{
             if(span.equals("")){
                 JOptionPane.showMessageDialog(null, "Pan is Required");
-            }
-            if(saadhar.equals("")){
-                JOptionPane.showMessageDialog(null, "Aadhar is Required");
-            }
-            if(senior.equals("")){
-                JOptionPane.showMessageDialog(null, "Senior Citizen must be Selected");
-            }
-            if(exiting.equals("")){
-                JOptionPane.showMessageDialog(null, "Exiting Account must be Selected");
             }else{
                 Conn c=new Conn();
-                String query="insert into signuptwo values('"+religion+"','"+category+"','"+income+"','"+quali+"','"+occupation+"','"+span+"','"+saadhar+"','"+senior+"','"+exiting+"')";
+                String query="insert into signuptwo values('"+formno+"','"+religion+"','"+category+"','"+income+"','"+quali+"','"+occupation+"','"+span+"','"+saadhar+"','"+senior+"','"+exiting+"')";
                 c.s.executeUpdate(query);
+                
+                setVisible(false);
+                new SignupThree(formno).setVisible(true);
             }
-            //catch
-            //abhay's comment
+            
             
         }catch(Exception e){
             System.out.println(e);
@@ -211,7 +206,7 @@ public class SignupTwo extends JFrame implements ActionListener{
     
     public static void main(String args[]) {
      
-        new SignupTwo();
+        new SignupTwo("");
         
     }
 }
