@@ -7,9 +7,10 @@ import java.awt.event.*;
 public class Transactions extends JFrame implements ActionListener {
     
     JButton deposit,withdrawl,fastcash,ministatement,pinchange,balanceenquiry,exit;
-    
+    String pinnumber;
     
     Transactions(String pinnumber){
+        this.pinnumber=pinnumber;
         setLayout(null);
         
         ImageIcon i1=new ImageIcon(ClassLoader.getSystemResource("Icons/atm.jpg"));
@@ -69,6 +70,9 @@ public class Transactions extends JFrame implements ActionListener {
     public void actionPerformed (ActionEvent ae){
         if(ae.getSource()==exit){
             System.exit(0);
+        }else if(ae.getSource()==deposit){
+            setVisible(false);
+            new Deposit(pinnumber).setVisible(true);
         }
     }
     
